@@ -18,7 +18,11 @@ const yahooFinance = require("yahoo-finance2").default;
 exports.helloWorld = onRequest(async (request, response) => {
   try {
     // 查询AAPL的相关信息
-    const results = await yahooFinance.search("AAPL");
+    // const results = await yahooFinance.search("AAPL");
+
+      const query = "AAPL";
+  const queryOptions = { period1: "2021-05-08" /* ... */ };
+  const results = await yahooFinance.chart(query, queryOptions);
 
     // 记录日志
     logger.info("Yahoo Finance Results", {structuredData: true});
